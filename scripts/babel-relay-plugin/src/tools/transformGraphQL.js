@@ -39,6 +39,7 @@ function transformGraphQL(schemaPath, source, filename) {
   var plugin = getBabelRelayPlugin(getSchema(schemaPath), {
     abortOnError: false,
     suppressWarnings: true,
+    debug: true
   });
   return babel.transform(source, {
     compact: false,
@@ -47,7 +48,6 @@ function transformGraphQL(schemaPath, source, filename) {
     blacklist: ['strict'],
     extra: {
       providesModule: 'Fixture',
-      debug: false,
     },
   }).code;
 }
